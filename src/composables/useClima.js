@@ -3,7 +3,7 @@ import axios from "axios";
 
 export default function useClima() {
   const clima = ref({});
-  const obtenerClima = async ({ ciudad, pais }) => {
+  const obtenerClima = async({ ciudad, pais }) => {
     // Importar el Api key
     const key = import.meta.env.VITE_API_KEY;
 
@@ -23,12 +23,15 @@ export default function useClima() {
   };
 
   const mostrarClima = computed(() => {
-    return Object.value(clima.value).length > 0;
+    return Object.values(clima.value).length > 0;
   });
+
+  const formatearTemperatura = temperatura => parseInt(temperatura - 273.15)
 
   return {
     obtenerClima,
     clima,
     mostrarClima,
+    formatearTemperatura
   };
 }
