@@ -7,6 +7,7 @@ const busqueda = reactive({
   pais: "",
 });
 const error = ref("");
+const emit = defineEmits(["obtener-clima"]);
 
 const paises = [
   { codigo: "US", nombre: "Estados Unidos" },
@@ -27,6 +28,8 @@ const consultarClima = () => {
     }, 2000);
     return;
   }
+
+  emit("obtener-clima");
 };
 </script>
 
